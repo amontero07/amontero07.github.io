@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semillas para Cristo — Materiales bíblicos y educativos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EC;
+    --ink:#20241C;
+    --forest:#2F4A3A;
+    --forest-dark:#1E332688;
+    --gold:#C79A34;
+    --sage:#8FA98F;
+    --line:#DCD3BE;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+
+  /* HERO */
+  header.hero{
+    background:var(--forest);
+    color:var(--cream);
+    padding:56px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:10px;
+    background-image: repeating-linear-gradient(
+      100deg,
+      var(--gold) 0 10px,
+      transparent 10px 22px
+    );
+    opacity:0.6;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:14px;
+    font-weight:700;
+  }
+  h1.title{
+    font-size:clamp(32px,6vw,52px);
+    line-height:1.05;
+    max-width:14ch;
+  }
+  .hero p.sub{
+    max-width:46ch;
+    margin-top:18px;
+    font-size:17px;
+    color:#EDE7D8;
+  }
+
+  /* NAV / cómo pedir */
+  .how{
+    background:var(--gold);
+    color:var(--ink);
+    padding:14px 0;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+  }
+
+  /* CATALOG */
+  section.catalog{padding:56px 0 40px;}
+  .catalog h2{
+    font-size:clamp(24px,4vw,32px);
+    margin-bottom:8px;
+  }
+  .catalog p.lead{
+    color:#4A4A3F;
+    max-width:56ch;
+    margin:0 0 34px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    background:#EFEADC;
+  }
+  .card-body{
+    padding:18px 20px 20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .card-body h3{
+    font-size:19px;
+    margin-bottom:6px;
+  }
+  .card-body p.desc{
+    font-size:14px;
+    color:#55554A;
+    margin:0 0 14px;
+    flex:1;
+  }
+  .price{
+    font-weight:700;
+    color:var(--forest);
+    font-size:16px;
+    margin-bottom:14px;
+  }
+  .btn-whatsapp{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--forest);
+    color:var(--cream);
+    text-decoration:none;
+    padding:11px 16px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:14px;
+    transition:background .15s ease;
+  }
+  .btn-whatsapp:hover{background:#243a2d;}
+  .btn-whatsapp svg{width:16px;height:16px;fill:currentColor;}
+
+  footer{
+    padding:36px 0 50px;
+    text-align:center;
+    color:#6B6B5E;
+    font-size:13px;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+  footer .verse{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:16px;
+    color:var(--forest);
+    margin-bottom:10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Mateo 13:31 — la semilla de mostaza</div>
+    <h1 class="title">Semillas para Cristo</h1>
+    <p class="sub">Materiales bíblicos y educativos para sembrar la Palabra en el hogar, la escuela dominical y la vida diaria.</p>
+  </div>
+</header>
+
+<div class="how">📱 Elige un artículo y toca "Pedir por WhatsApp" — coordinamos el pago y la entrega por chat</div>
+
+<section class="catalog">
+  <div class="wrap">
+    <h2>Catálogo</h2>
+    <p class="lead">Pocos artículos, cuidadosamente seleccionados. Escríbenos si buscas algo que no ves aquí.</p>
+
+    <div class="grid">
+
+      <!-- PRODUCTO 1 -->
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300/EFEADC/8FA98F?text=Biblia+de+Estudio" alt="Biblia de Estudio Reina Valera">
+        <div class="card-body">
+          <h3>Biblia de Estudio Reina Valera</h3>
+          <p class="desc">Con notas explicativas, mapas y concordancia. Ideal para estudio personal o en grupo.</p>
+          <div class="price">$1,200 CUP</div>
+          <a class="btn-whatsapp" href="https://wa.me/5350000000?text=Hola%2C%20quiero%20pedir%3A%20Biblia%20de%20Estudio%20Reina%20Valera" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.24c-.22.62-1.29 1.18-1.79 1.25-.46.07-1.03.1-1.66-.1-.38-.12-.87-.29-1.5-.56-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.94.93-2.2.24-.27.53-.33.7-.33.18 0 .36 0 .51.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.87.27.13.45.2.51.31.07.13.07.71-.15 1.33z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300/EFEADC/8FA98F?text=Cuaderno+B%C3%ADblico" alt="Cuaderno de Estudio Bíblico para Niños">
+        <div class="card-body">
+          <h3>Cuaderno Bíblico para Niños</h3>
+          <p class="desc">Actividades, dibujos para colorear y versículos clave, pensado para escuela dominical.</p>
+          <div class="price">$350 CUP</div>
+          <a class="btn-whatsapp" href="https://wa.me/5350000000?text=Hola%2C%20quiero%20pedir%3A%20Cuaderno%20B%C3%ADblico%20para%20Ni%C3%B1os" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.24c-.22.62-1.29 1.18-1.79 1.25-.46.07-1.03.1-1.66-.1-.38-.12-.87-.29-1.5-.56-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.94.93-2.2.24-.27.53-.33.7-.33.18 0 .36 0 .51.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.87.27.13.45.2.51.31.07.13.07.71-.15 1.33z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 3 -->
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300/EFEADC/8FA98F?text=Devocional+Diario" alt="Devocional Diario Semillas de Fe">
+        <div class="card-body">
+          <h3>Devocional Diario "Semillas de Fe"</h3>
+          <p class="desc">365 reflexiones breves con espacio para notas personales. Ideal para regalo.</p>
+          <div class="price">$500 CUP</div>
+          <a class="btn-whatsapp" href="https://wa.me/5350000000?text=Hola%2C%20quiero%20pedir%3A%20Devocional%20Diario%20Semillas%20de%20Fe" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.32A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.24c-.22.62-1.29 1.18-1.79 1.25-.46.07-1.03.1-1.66-.1-.38-.12-.87-.29-1.5-.56-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.94.93-2.2.24-.27.53-.33.7-.33.18 0 .36 0 .51.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.14.11.3.02.48-.09.18-.14.29-.27.45-.14.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.87.27.13.45.2.51.31.07.13.07.71-.15 1.33z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="verse">"El reino de los cielos es semejante a un grano de mostaza..."</div>
+    Semillas para Cristo · Holguín, Cuba
+  </div>
+</footer>
+
+</body>
+</html>
