@@ -134,6 +134,78 @@
 
   footer{padding:40px 0 54px;text-align:center;color:#6B6B5E;font-size:13px;border-top:1px solid var(--line);margin-top:10px;}
   footer .verse{font-family:'Fraunces', serif;font-style:italic;font-size:16px;color:var(--forest);margin-bottom:10px;}
+/* ===== Cinta rodante ===== */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--forest-dark);
+  color: var(--cream);
+  padding: 8px 0;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  margin: 0;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 30s linear infinite;
+  padding-left: 100%; /* inicia fuera de pantalla */
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+
+.ticker-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.ticker-item .ticker-title {
+  display: inline-block;
+}
+
+/* Pausa al pasar el mouse */
+.ticker-wrap:hover .ticker {
+  animation-play-state: paused;
+}
+
+/* Animación */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .ticker-item {
+    font-size: 12px;
+    padding: 0 16px;
+  }
+  .ticker-item img {
+    width: 24px;
+    height: 24px;
+  }
+  .ticker {
+    animation-duration: 25s;
+  }
+}
 </style>
 </head>
 <body>
@@ -172,7 +244,10 @@
     <span data-i18n="trust4">💬 Soporte por WhatsApp</span>
   </div>
 </div>
-
+<!-- Cinta rodante de novedades -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
 <section class="toolbar">
   <div class="wrap">
     <h2 data-i18n="catalog_h2">Catálogo</h2>
@@ -485,6 +560,35 @@ document.getElementById("langToggle").addEventListener("click", ()=>{
   document.getElementById("langToggle").textContent = idiomaActual === "es" ? "EN" : "ES";
   document.documentElement.lang = idiomaActual;
 });
+// ===== Cinta rodante (ticker) =====
+function generarTicker() {
+  const ticker = document.getElementById('ticker');
+  if (!ticker) return;
+
+  // Tomar datos de productos
+  const items = productos.map(p => ({
+    titulo: p.titulo,
+    imagen: p.imagen
+  }));
+
+  // Repetir varias veces para que el desplazamiento sea infinito
+  const repeticiones = Math.max(3, Math.ceil(10 / items.length));
+  let contenido = '';
+  for (let i = 0; i < repeticiones; i++) {
+    items.forEach(item => {
+      contenido += `
+        <span class="ticker-item">
+          <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
+          <span class="ticker-title">${item.titulo}</span>
+        </span>
+      `;
+    });
+  }
+  ticker.innerHTML = contenido;
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', generarTicker);
 </script>
 
 </body>
