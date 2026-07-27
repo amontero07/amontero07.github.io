@@ -34,6 +34,36 @@
   }
   a{color:inherit;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 16px 0 12px;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+.social-links a:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+  transform: scale(1.08);
+}
+.social-links a:hover .fa-facebook-f { color: #1877f2; }
+.social-links a:hover .fa-instagram { color: #e4405f; }
+.social-links a:hover .fa-youtube { color: #ff0000; }
+.social-links a:hover .fa-whatsapp { color: #25d366; }
 
   /* NAVBAR */
   nav.topbar{
