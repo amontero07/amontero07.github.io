@@ -73,12 +73,15 @@
   /* HERO */
   header.hero{
     background:
-      linear-gradient(rgba(30,51,38,0.72), rgba(30,51,38,0.72)),
+      linear-gradient(rgba(30,51,38,0.25), rgba(30,51,38,0.25)),
       url('cabecera.jpg') center/cover no-repeat;
     color:var(--cream);
     padding:48px 0 56px;
     position:relative;
     overflow:hidden;
+  }
+  header.hero .eyebrow, header.hero .title, header.hero p.sub{
+    text-shadow: 0 2px 8px rgba(0,0,0,0.55);
   }
   header.hero::after{
     content:"";
