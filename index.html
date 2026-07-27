@@ -217,6 +217,62 @@
     border-top:1px solid var(--line);margin-top:10px;
   }
   footer .verse{font-family:'Fraunces', serif;font-style:italic;font-size:16px;color:var(--forest);margin-bottom:10px;}
+/* ===== Cinta rodante ===== */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--forest-dark);
+  color: var(--cream);
+  padding: 10px 0;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  margin: 0;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 25s linear infinite;
+  padding-left: 100%; /* para que empiece fuera de la pantalla */
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 40px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ticker-item::before {
+  content: "🌱 ";
+}
+
+/* Pausa al pasar el mouse */
+.ticker-wrap:hover .ticker {
+  animation-play-state: paused;
+}
+
+/* Animación */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Para móviles, un poco más pequeño */
+@media (max-width: 600px) {
+  .ticker-item {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+  .ticker {
+    animation-duration: 20s;
+  }
+}
 </style>
 </head>
 <body>
@@ -244,7 +300,12 @@
     <span>💬 Soporte por WhatsApp</span>
   </div>
 </div>
-
+<!-- Cinta rodante de novedades -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <!-- El contenido lo genera JavaScript -->
+  </div>
+</div>
 <section class="catalog">
   <div class="wrap">
     <h2>Catálogo</h2>
@@ -403,6 +464,26 @@ function crearTarjeta(p){
 
 document.getElementById("product-grid").innerHTML =
   productos.map(crearTarjeta).join("");
+// ===== Cinta rodante: generar items desde el array de productos =====
+function generarTicker() {
+  const ticker = document.getElementById('ticker');
+  if (!ticker) return;
+
+  // Tomar los títulos de los productos, y duplicarlos para que el bucle sea infinito
+  const items = productos.map(p => p.titulo);
+  // Si hay pocos productos, repetir varias veces para que se vea fluido
+  const repeticiones = Math.max(2, Math.ceil(10 / items.length));
+  let contenido = '';
+  for (let i = 0; i < repeticiones; i++) {
+    items.forEach(titulo => {
+      contenido += `<span class="ticker-item">${titulo}</span>`;
+    });
+  }
+  ticker.innerHTML = contenido;
+}
+
+// Ejecutar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', generarTicker);
 </script>
 
 </body>
