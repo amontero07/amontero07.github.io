@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semillas para Cristo — Tienda de recursos bíblicos y educativos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EC;
+    --ink:#20241C;
+    --forest:#2F4A3A;
+    --forest-dark:#1E3326;
+    --gold:#C79A34;
+    --sage:#8FA98F;
+    --line:#DCD3BE;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* NAVBAR */
+  nav.topbar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--forest);
+    color:var(--cream);
+    padding:14px 0;
+    border-bottom:3px solid var(--gold);
+  }
+  nav.topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:700;
+    text-decoration:none;
+    color:var(--cream);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav-cta{
+    background:var(--gold);
+    color:var(--ink);
+    text-decoration:none;
+    padding:9px 16px;
+    border-radius:3px;
+    font-weight:700;
+    font-size:13px;
+    white-space:nowrap;
+  }
+
+  /* HERO */
+  header.hero{
+    background:var(--forest);
+    color:var(--cream);
+    padding:48px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:10px;
+    background-image: repeating-linear-gradient(100deg, var(--gold) 0 10px, transparent 10px 22px);
+    opacity:0.6;
+  }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:12px;
+    font-weight:700;
+  }
+  h1.title{
+    font-size:clamp(28px,6vw,44px);
+    line-height:1.08;
+    max-width:16ch;
+  }
+  .hero p.sub{
+    max-width:50ch;
+    margin-top:16px;
+    font-size:16px;
+    color:#EDE7D8;
+  }
+
+  /* TRUST STRIP */
+  .trust{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .trust .wrap{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:12px 20px;
+    font-size:13px;
+    font-weight:700;
+  }
+  .trust span{display:flex;align-items:center;gap:6px;}
+
+  /* CATALOG */
+  section.catalog{padding:52px 0 40px;}
+  .catalog h2{
+    font-size:clamp(22px,4vw,30px);
+    margin-bottom:8px;
+  }
+  .catalog p.lead{
+    color:#4A4A3F;
+    max-width:56ch;
+    margin:0 0 32px;
+    font-size:15px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:26px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 1px 3px rgba(32,36,28,0.06);
+  }
+  .card-media{
+    position:relative;
+    background:#EFEADC;
+  }
+  .card-media img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+  }
+  .badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    padding:6px 12px;
+    border-radius:3px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.03em;
+  }
+  .badge.free{background:var(--forest);color:var(--cream);}
+  .badge.paid{background:var(--gold);color:var(--ink);}
+
+  .card-body{
+    padding:22px 24px 26px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .card-kicker{
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .card-body h3{
+    font-size:21px;
+    margin-bottom:6px;
+    line-height:1.2;
+  }
+  .card-body p.tagline{
+    font-size:14px;
+    color:#55554A;
+    margin:0 0 4px;
+  }
+  .card-body p.author{
+    font-size:12px;
+    color:#8a8a7a;
+    margin:0 0 14px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    margin:6px 0 16px;
+  }
+  .price{
+    font-weight:700;
+    color:var(--forest);
+    font-size:22px;
+  }
+  .price.free-price{color:var(--forest);}
+  .price-note{
+    font-size:12px;
+    color:#8a8a7a;
+  }
+
+  details.more{
+    margin-bottom:18px;
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  details.more summary{
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+    color:var(--forest);
+    list-style:none;
+  }
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::before{
+    content:"+ ";
+  }
+  details.more[open] summary::before{
+    content:"– ";
+  }
+  details.more .inner{
+    font-size:14px;
+    color:#3A3A30;
+    padding-top:12px;
+    line-height:1.7;
+  }
+  details.more .verse{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--forest);
+    margin:14px 0;
+    font-size:14px;
+  }
+
+  .cta-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:auto;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    text-decoration:none;
+    padding:12px 16px;
+    border-radius:3px;
+    font-weight:700;
+    font-size:14px;
+    flex:1;
+    min-width:140px;
+    transition:opacity .15s ease;
+  }
+  .btn:hover{opacity:0.88;}
+  .btn-primary{background:var(--forest);color:var(--cream);}
+  .btn-whatsapp{background:var(--gold);color:var(--ink);}
+  .btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+
+  .fine-print{
+    font-size:11px;
+    color:#9a9a8c;
+    margin-top:14px;
+    line-height:1.6;
+  }
+
+  footer{
+    padding:40px 0 54px;
+    text-align:center;
+    color:#6B6B5E;
+    font-size:13px;
+    border-top:1px solid var(--line);
+    margin-top:10px;
+  }
+  footer .verse{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:16px;
+    color:var(--forest);
+    margin-bottom:10px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">🌱 Semillas para Cristo</a>
+    <a class="nav-cta" href="https://wa.me/5356562043?text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Mateo 13:31 — la semilla de mostaza</div>
+    <h1 class="title">Recursos para sembrar la Palabra</h1>
+    <p class="sub">Materiales bíblicos y educativos para maestros, líderes y familias que quieren discipular con propósito eterno.</p>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span>✅ Ministerio cristiano</span>
+    <span>⚡ Entrega inmediata</span>
+    <span>🔒 Pago seguro</span>
+    <span>💬 Soporte por WhatsApp</span>
+  </div>
+</div>
+
+<section class="catalog">
+  <div class="wrap">
+    <h2>Catálogo</h2>
+    <p class="lead">Recursos pensados para maestros de escuela dominical, líderes de jóvenes y padres que discipulan en casa.</p>
+
+    <div class="grid">
+
+      <!-- PRODUCTO 1: REGALO GRATIS -->
+      <div class="card">
+        <div class="card-media">
+          <img src="sembradoresdefe.jpg" alt="Sembradores de Fe">
+          <span class="badge free">REGALO · GRATIS</span>
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Guía para maestros</div>
+          <h3>Sembradores de Fe</h3>
+          <p class="tagline">Guía práctica para maestros que inspiran y transforman corazones.</p>
+
+          <div class="price-row">
+            <span class="price free-price">Gratis</span>
+            <span class="price-note">PDF · descarga inmediata</span>
+          </div>
+
+          <details class="more">
+            <summary>Ver detalles del contenido</summary>
+            <div class="inner">
+              Para agradecerte por seguirnos y confiar en nuestro ministerio, te obsequiamos este recurso exclusivo. Sin trucos, sin suscripciones ocultas — solo queremos bendecir tu ministerio.
+              <br><br>
+              <strong>¿Qué encontrarás dentro?</strong><br>
+              🧠 Autopreparación del maestro<br>
+              👶 Etapas de desarrollo (3 a 16 años)<br>
+              📋 Estructura de clase paso a paso<br>
+              📖 Técnicas de memorización creativa<br>
+              ✅ Manejo de disciplina con amor y orden<br>
+              ✅ Estrategias para preadolescentes y adolescentes
+              <div class="verse">"Así que ni el que planta es algo, ni el que riega, sino Dios, que da el crecimiento." (1 Corintios 3:7)</div>
+            </div>
+          </details>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://drive.google.com/uc?export=download&id=1JP-3Ig7Ndxe6UuESrdafurhzrunOKCh2" target="_blank" rel="noopener">
+              ⬇️ Descargar gratis
+            </a>
+            <a class="btn btn-whatsapp" href="https://wa.me/5356562043?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Sembradores%20de%20Fe" target="_blank" rel="noopener">
+              💬 WhatsApp
+            </a>
+          </div>
+
+          <p class="fine-print">
+            Regalo de bienvenida. Puedes compartirlo con otros maestros, pero no se permite su venta ni reproducción masiva sin autorización. · ricardobarbara588@gmail.com
+          </p>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 2: LIBRO DE PAGO -->
+      <div class="card">
+        <div class="card-media">
+          <img src="regandolasemilla.jpg" alt="Regando la Semilla">
+          <span class="badge paid">$9.99 USD</span>
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Libro digital · PDF</div>
+          <h3>Regando la Semilla</h3>
+          <p class="tagline">El llamado urgente de la siembra — equipa tu ministerio infantil con propósito eterno.</p>
+          <p class="author">Autor: Ministerio Semillas para Cristo</p>
+
+          <div class="price-row">
+            <span class="price">$9.99 USD</span>
+            <span class="price-note">Descarga inmediata tras la compra</span>
+          </div>
+
+          <details class="more">
+            <summary>Ver detalles del contenido</summary>
+            <div class="inner">
+              No es un simple manual de actividades. Es un mapa estratégico y un clamor pastoral para activar el recurso más valioso que Dios ha confiado a su Iglesia: las nuevas generaciones. Este libro te equipará con herramientas teológicas, pedagógicas y metodológicas para presentar el mensaje de salvación con claridad y guiar los primeros pasos del discipulado.
+              <br><br>
+              <strong>Lo que encontrarás dentro:</strong><br>
+              📘 Cap. 1 — La Teología de la Niñez<br>
+              🗣️ Cap. 2 — El Lenguaje de la Semilla<br>
+              🌱 Cap. 3 — Evangelismo por Etapas<br>
+              💧 Cap. 4 — Los Primeros Pasos después del "Sí"<br>
+              🎶 Cap. 5 — Hábitos Espirituales Divertidos
+              <div class="verse">"Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él." (Proverbios 22:6)</div>
+              <strong>¿Para quién es este libro?</strong><br>
+              ✅ Maestros de Escuela Dominical · Pastores de jóvenes · Líderes de ministerio infantil · Padres que discipulan en casa · Directores de escuelas cristianas
+            </div>
+          </details>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://www.qvapay.com/payme/brbaramara?link=regandosemillas" target="_blank" rel="noopener">
+              🛒 Comprar ahora
+            </a>
+            <a class="btn btn-whatsapp" href="https://wa.me/5356562043?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Regando%20la%20Semilla" target="_blank" rel="noopener">
+              💬 WhatsApp
+            </a>
+          </div>
+
+          <p class="fine-print">
+            ⚡ Pago seguro a través de QvaPay. Recibirás el libro al instante. Prohibida su reproducción sin autorización. · semillasparacristo22@gmail.com
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="verse">"El reino de los cielos es semejante a un grano de mostaza..."</div>
+    Semillas para Cristo · Holguín, Cuba
+  </div>
+</footer>
+
+</body>
+</html>
