@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semillas para Cristo — Tienda de recursos bíblicos y educativos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EC;
+    --ink:#20241C;
+    --forest:#2F4A3A;
+    --forest-dark:#1E3326;
+    --gold:#C79A34;
+    --sage:#8FA98F;
+    --line:#DCD3BE;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3', sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Fraunces', serif;margin:0;font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+  section{scroll-margin-top:76px;}
+
+  /* NAVBAR */
+  nav.topbar{position:sticky;top:0;z-index:50;background:var(--forest);color:var(--cream);padding:14px 0;border-bottom:3px solid var(--gold);}
+  nav.topbar .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;position:relative;}
+  .brand{font-family:'Fraunces', serif;font-size:19px;font-weight:700;text-decoration:none;color:var(--cream);display:flex;align-items:center;gap:8px;z-index:10;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:24px;cursor:pointer;padding:4px 8px;z-index:10;}
+  .nav-menu{display:flex;list-style:none;margin:0;padding:0;gap:6px 18px;align-items:center;flex-wrap:wrap;}
+  .nav-menu li a{color:var(--cream);text-decoration:none;font-size:13.5px;font-weight:600;padding:6px 0;border-bottom:2px solid transparent;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+  .nav-menu li a:hover{border-bottom-color:var(--gold);color:var(--gold);}
+  .lang-toggle{background:none;border:1px solid var(--sage);color:var(--cream);border-radius:3px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;}
+  .nav-cta{background:var(--gold);color:var(--ink);text-decoration:none;padding:9px 16px;border-radius:3px;font-weight:700;font-size:13px;white-space:nowrap;display:flex;align-items:center;gap:6px;margin-left:auto;}
+  @media (max-width:900px){
+    .menu-toggle{display:block;}
+    .nav-menu{display:none;flex-direction:column;align-items:stretch;width:100%;background:var(--forest-dark);padding:18px 0 26px;margin-top:10px;border-top:2px solid var(--gold);gap:4px;order:3;}
+    .nav-menu.open{display:flex;}
+    .nav-menu li a{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:15px;}
+    .nav-cta{margin-left:0;order:2;}
+    .lang-toggle{order:1;}
+  }
+
+  /* HERO */
+  header.hero{
+    background-color:var(--forest);
+    background-image:linear-gradient(rgba(20,35,26,0.15), rgba(20,35,26,0.15)), url('cabecera.jpg');
+    background-position:center;background-size:contain;background-repeat:no-repeat;
+    color:var(--cream);padding:48px 0 56px;position:relative;overflow:hidden;
+  }
+  header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background-image:repeating-linear-gradient(100deg, var(--gold) 0 10px, transparent 10px 22px);opacity:0.6;}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,0.55);}
+  h1.title{font-size:clamp(28px,6vw,44px);line-height:1.08;max-width:16ch;text-shadow:0 2px 8px rgba(0,0,0,0.55);}
+  .hero p.sub{max-width:50ch;margin-top:16px;font-size:16px;color:#FFFFFF;text-shadow:0 2px 10px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9);font-weight:600;}
+
+  /* TRUST STRIP */
+  .trust{background:var(--gold);color:var(--ink);}
+  .trust .wrap{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding:12px 20px;font-size:13px;font-weight:700;}
+  .trust span{display:flex;align-items:center;gap:6px;}
+
+  /* TOOLBAR: sort + tags */
+  .toolbar{padding:36px 0 0;}
+  .toolbar h2{font-size:clamp(22px,4vw,30px);margin-bottom:8px;}
+  .toolbar p.lead{color:#4A4A3F;max-width:56ch;margin:0 0 24px;font-size:15px;}
+
+  .sort-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .sort-btn{
+    background:var(--white);border:1px solid var(--line);color:var(--ink);
+    padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;
+  }
+  .sort-btn.active{background:var(--forest);color:var(--cream);border-color:var(--forest);}
+
+  .tag-cloud{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px;}
+  .tag-pill{
+    background:transparent;border:1px solid var(--gold);color:var(--forest);
+    padding:6px 13px;border-radius:20px;font-size:12.5px;font-weight:700;cursor:pointer;
+  }
+  .tag-pill.active{background:var(--gold);color:var(--ink);}
+
+  /* CATALOG GRID */
+  section.catalog{padding:6px 0 40px;}
+  #product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(32,36,28,0.06);}
+  .card-media{position:relative;background:#EFEADC;}
+  .card-media img{width:100%;height:260px;object-fit:cover;display:block;}
+  .badge{position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:3px;font-size:12px;font-weight:700;letter-spacing:.03em;}
+  .badge.free{background:var(--forest);color:var(--cream);}
+  .badge.paid{background:var(--gold);color:var(--ink);}
+  .badge2{position:absolute;top:14px;right:14px;padding:5px 10px;border-radius:3px;font-size:11px;font-weight:700;background:rgba(32,36,28,0.75);color:#fff;}
+
+  .card-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;}
+  .card-kicker{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:6px;}
+  .card-body h3{font-size:21px;margin-bottom:6px;line-height:1.2;}
+  .card-body p.tagline{font-size:14px;color:#55554A;margin:0 0 4px;}
+  .card-body p.author{font-size:12px;color:#8a8a7a;margin:0 0 14px;}
+  .price-row{display:flex;align-items:baseline;gap:8px;margin:6px 0 16px;}
+  .price{font-weight:700;color:var(--forest);font-size:22px;}
+  .price-note{font-size:12px;color:#8a8a7a;}
+
+  details.more{margin-bottom:18px;border-top:1px solid var(--line);padding-top:14px;}
+  details.more summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--forest);list-style:none;}
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::before{content:"+ ";}
+  details.more[open] summary::before{content:"– ";}
+  details.more .inner{font-size:14px;color:#3A3A30;padding-top:12px;line-height:1.7;}
+  details.more .verse{font-family:'Fraunces', serif;font-style:italic;color:var(--forest);margin:14px 0;font-size:14px;}
+
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;padding:12px 16px;border-radius:3px;font-weight:700;font-size:14px;flex:1;min-width:140px;transition:opacity .15s ease;border:none;cursor:pointer;}
+  .btn:hover{opacity:0.88;}
+  .btn-primary{background:var(--forest);color:var(--cream);}
+  .btn-whatsapp{background:var(--gold);color:var(--ink);}
+  .fine-print{font-size:11px;color:#9a9a8c;margin-top:14px;line-height:1.6;}
+  .empty-state{color:#8a8a7a;font-size:14px;padding:30px 0;text-align:center;}
+
+  /* SOBRE NOSOTROS / CONTACTO */
+  .info-section{padding:52px 0;}
+  .info-section.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .info-section h2{font-size:clamp(22px,4vw,28px);margin-bottom:14px;}
+  .info-section p{max-width:62ch;color:#3A3A30;font-size:15px;}
+
+  form.contact-form{max-width:520px;margin-top:18px;display:flex;flex-direction:column;gap:12px;}
+  form.contact-form input, form.contact-form textarea{
+    font-family:inherit;font-size:14px;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--cream);color:var(--ink);
+  }
+  form.contact-form textarea{min-height:110px;resize:vertical;}
+  form.contact-form button{
+    background:var(--forest);color:var(--cream);border:none;padding:13px 20px;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;align-self:flex-start;
+  }
+  .contact-details{margin-top:22px;font-size:14px;color:#3A3A30;line-height:1.9;}
+
+  footer{padding:40px 0 54px;text-align:center;color:#6B6B5E;font-size:13px;border-top:1px solid var(--line);margin-top:10px;}
+  footer .verse{font-family:'Fraunces', serif;font-style:italic;font-size:16px;color:var(--forest);margin-bottom:10px;}
+/* ===== Cinta rodante ===== */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--forest-dark);
+  color: var(--cream);
+  padding: 8px 0;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  margin: 0;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 30s linear infinite;
+  padding-left: 100%; /* inicia fuera de pantalla */
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 30px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+
+.ticker-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  flex-shrink: 0;
+}
+
+.ticker-item .ticker-title {
+  display: inline-block;
+}
+
+/* Pausa al pasar el mouse */
+.ticker-wrap:hover .ticker {
+  animation-play-state: paused;
+}
+
+/* Animación */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .ticker-item {
+    font-size: 12px;
+    padding: 0 16px;
+  }
+  .ticker-item img {
+    width: 24px;
+    height: 24px;
+  }
+  .ticker {
+    animation-duration: 25s;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">🌱 Semillas para Cristo</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#top" data-i18n="nav_inicio">🏠 Inicio</a></li>
+      <li><a href="#libros" data-i18n="nav_libros">📚 Libros y manuales</a></li>
+      <li><a href="#herramientas" data-i18n="nav_herramientas">🗂️ Herramientas</a></li>
+      <li><a href="#gratis" data-i18n="nav_gratis">🎁 Recursos gratuitos</a></li>
+      <li><a href="#como-comprar" data-i18n="nav_comprar">❓ ¿Cómo comprar?</a></li>
+      <li><a href="#nosotros" data-i18n="nav_nosotros">👥 Sobre nosotros</a></li>
+      <li><a href="#contacto" data-i18n="nav_contacto">✉️ Contáctanos</a></li>
+    </ul>
+    <button class="lang-toggle" id="langToggle">EN</button>
+    <a class="nav-cta" href="https://wa.me/5356562043?text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="hero_eyebrow">Mateo 13:31 — la semilla de mostaza</div>
+    <h1 class="title" data-i18n="hero_title">Recursos para sembrar la Palabra</h1>
+    <p class="sub" data-i18n="hero_sub">Materiales bíblicos y educativos para maestros, líderes y familias que quieren discipular con propósito eterno.</p>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span data-i18n="trust1">✅ Ministerio cristiano</span>
+    <span data-i18n="trust2">⚡ Entrega inmediata</span>
+    <span data-i18n="trust3">🔒 Pago seguro</span>
+    <span data-i18n="trust4">💬 Soporte por WhatsApp</span>
+  </div>
+</div>
+<!-- Cinta rodante de novedades -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+<section class="toolbar">
+  <div class="wrap">
+    <h2 data-i18n="catalog_h2">Catálogo</h2>
+    <p class="lead" data-i18n="catalog_lead">Recursos pensados para maestros de escuela dominical, líderes de jóvenes y padres que discipulan en casa.</p>
+
+    <div class="sort-row" id="sortRow"></div>
+    <div class="tag-cloud" id="tagCloud"></div>
+  </div>
+</section>
+
+<section class="catalog" id="libros">
+  <div class="wrap">
+    <div id="product-grid"></div>
+  </div>
+</section>
+
+<section class="info-section alt" id="herramientas">
+  <div class="wrap">
+    <h2 data-i18n="tools_h2">🗂️ Herramientas de organización y administración</h2>
+    <p data-i18n="tools_p">Próximamente: plantillas de planificación de clases, calendarios de escuela dominical y hojas de seguimiento de asistencia. Escríbenos si necesitas alguna en particular.</p>
+  </div>
+</section>
+
+<section class="info-section" id="gratis">
+  <div class="wrap">
+    <h2 data-i18n="gratis_h2">🎁 Recursos gratuitos</h2>
+    <p data-i18n="gratis_p">Todos nuestros regalos de bienvenida están marcados con la etiqueta "Gratis" en el catálogo de arriba. Descárgalos sin registro ni compromiso.</p>
+  </div>
+</section>
+
+<section class="info-section alt" id="como-comprar">
+  <div class="wrap">
+    <h2 data-i18n="comprar_h2">❓ ¿Cómo comprar?</h2>
+    <p data-i18n="comprar_p">1. Elige el recurso que te interesa. 2. Toca "Comprar ahora" — el pago se procesa de forma segura con QvaPay. 3. Recibes el archivo digital de inmediato. Si prefieres coordinar por WhatsApp, también puedes escribirnos directamente desde cualquier tarjeta.</p>
+  </div>
+</section>
+
+<section class="info-section" id="nosotros">
+  <div class="wrap">
+    <h2 data-i18n="nosotros_h2">👥 Sobre nosotros</h2>
+    <p data-i18n="nosotros_p">Somos un ministerio dedicado a proveer recursos bíblicos y educativos de calidad para maestros, líderes y familias. Nuestra misión es sembrar la Palabra de Dios en cada corazón, equipando a quienes enseñan a las nuevas generaciones.</p>
+  </div>
+</section>
+
+<section class="info-section alt" id="contacto">
+  <div class="wrap">
+    <h2 data-i18n="contacto_h2">✉️ Contáctanos</h2>
+    <p data-i18n="contacto_p">¿Tienes preguntas o sugerencias? Escríbenos por este formulario o directamente por WhatsApp.</p>
+
+    <!--
+      IMPORTANTE: reemplaza "TU_FORM_ID" por el ID que te da Formspree.io
+      (crea una cuenta gratis en formspree.io, "New Form", copia el ID
+      de la URL que te dan, que se ve así: https://formspree.io/f/abcd1234)
+    -->
+    <form class="contact-form" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+
+    <div class="contact-details">
+      📧 semillasparacristo22@gmail.com<br>
+      📱 <a href="https://wa.me/5356562043" target="_blank">+53 5 6562043</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="verse">"El reino de los cielos es semejante a un grano de mostaza..."</div>
+    Semillas para Cristo · Holguín, Cuba
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1) LISTA DE PRODUCTOS
+   Para agregar uno nuevo, copia un bloque { ... }, pégalo antes
+   del ] final y cambia los valores.
+
+   Campos nuevos importantes para los filtros:
+   - categoria: para la nube de etiquetas (ej: "Libros y manuales")
+   - fecha: "AAAA-MM-DD" (para ordenar por "Más reciente")
+   - popularidad: número, mayor = más popular
+   - comprados: número de ventas (para "Más comprado")
+============================================================ */
+const productos = [
+  {
+    tipo: "gratis",
+    categoria: "Recursos gratuitos",
+    kicker: "Guía para maestros",
+    titulo: "Sembradores de Fe",
+    tagline: "Guía práctica para maestros que inspiran y transforman corazones.",
+    autor: "",
+    precio: "Gratis",
+    precioNota: "PDF · descarga inmediata",
+    imagen: "sembradoresdefe.jpg",
+    fecha: "2026-07-20",
+    popularidad: 90,
+    comprados: 240,
+    detalleHtml: `
+      Para agradecerte por seguirnos y confiar en nuestro ministerio, te obsequiamos este recurso exclusivo. Sin trucos, sin suscripciones ocultas — solo queremos bendecir tu ministerio.
+      <br><br>
+      <strong>¿Qué encontrarás dentro?</strong><br>
+      🧠 Autopreparación del maestro<br>
+      👶 Etapas de desarrollo (3 a 16 años)<br>
+      📋 Estructura de clase paso a paso<br>
+      📖 Técnicas de memorización creativa<br>
+      ✅ Manejo de disciplina con amor y orden<br>
+      ✅ Estrategias para preadolescentes y adolescentes
+      <div class="verse">"Así que ni el que planta es algo, ni el que riega, sino Dios, que da el crecimiento." (1 Corintios 3:7)</div>
+    `,
+    enlacePrincipal: "https://drive.google.com/uc?export=download&id=1JP-3Ig7Ndxe6UuESrdafurhzrunOKCh2",
+    textoBotonPrincipal: "⬇️ Descargar gratis",
+    enlaceWhatsapp: "https://wa.me/5356562043?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Sembradores%20de%20Fe",
+    finePrint: "Regalo de bienvenida. Puedes compartirlo con otros maestros, pero no se permite su venta ni reproducción masiva sin autorización. · ricardobarbara588@gmail.com"
+  },
+  {
+    tipo: "pago",
+    categoria: "Libros y manuales",
+    kicker: "Libro digital · PDF",
+    titulo: "Regando la Semilla",
+    tagline: "El llamado urgente de la siembra — equipa tu ministerio infantil con propósito eterno.",
+    autor: "Autor: Ministerio Semillas para Cristo",
+    precio: "$9.99 USD",
+    precioNota: "Descarga inmediata tras la compra",
+    imagen: "regandolasemilla.jpg",
+    fecha: "2026-07-25",
+    popularidad: 75,
+    comprados: 58,
+    detalleHtml: `
+      No es un simple manual de actividades. Es un mapa estratégico y un clamor pastoral para activar el recurso más valioso que Dios ha confiado a su Iglesia: las nuevas generaciones. Este libro te equipará con herramientas teológicas, pedagógicas y metodológicas para presentar el mensaje de salvación con claridad y guiar los primeros pasos del discipulado.
+      <br><br>
+      <strong>Lo que encontrarás dentro:</strong><br>
+      📘 Cap. 1 — La Teología de la Niñez<br>
+      🗣️ Cap. 2 — El Lenguaje de la Semilla<br>
+      🌱 Cap. 3 — Evangelismo por Etapas<br>
+      💧 Cap. 4 — Los Primeros Pasos después del "Sí"<br>
+      🎶 Cap. 5 — Hábitos Espirituales Divertidos
+      <div class="verse">"Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él." (Proverbios 22:6)</div>
+      <strong>¿Para quién es este libro?</strong><br>
+      ✅ Maestros de Escuela Dominical · Pastores de jóvenes · Líderes de ministerio infantil · Padres que discipulan en casa · Directores de escuelas cristianas
+    `,
+    enlacePrincipal: "https://tppay.me/ms57z0a4",
+    textoBotonPrincipal: "Pagar ahora",
+    botonTropipay: true,
+    enlaceWhatsapp: "https://wa.me/5356562043?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Regando%20la%20Semilla",
+    finePrint: "⚡ Pago seguro a través de QvaPay. Recibirás el libro al instante. Prohibida su reproducción sin autorización. · semillasparacristo22@gmail.com"
+  }
+  // 👉 Copia desde el { hasta la } de arriba para agregar otro producto.
+];
+
+/* ============================================================
+   2) RENDER DE TARJETAS
+============================================================ */
+function crearTarjeta(p){
+  const badgeClass = p.tipo === "gratis" ? "free" : "paid";
+  const badgeTexto = p.tipo === "gratis" ? "REGALO · GRATIS" : p.precio;
+  const autorHtml = p.autor ? `<p class="author">${p.autor}</p>` : "";
+  const botonPrincipalHtml = p.botonTropipay
+    ? `<a
+        class="btn-tropipay"
+        style="
+          font-family: Roboto, Helvetica, Arial, sans-serif;
+          font-size: 18px;
+          display: inherit;
+          background: #121725;
+          border-radius: 6px;
+          border: none;
+          max-width: 450px;
+          width: auto;
+          padding: 16px 24px;
+          color: #fff;
+          text-align: center;
+          text-decoration: none;
+        "
+        data-tropipay-checkout="true"
+        data-url="${p.enlacePrincipal}"
+        href="${p.enlacePrincipal}"
+      >${p.textoBotonPrincipal}</a>`
+    : `<a class="btn btn-primary" href="${p.enlacePrincipal}" target="_blank" rel="noopener">${p.textoBotonPrincipal}</a>`;
+  return `
+    <div class="card" data-categoria="${p.categoria}">
+      <div class="card-media">
+        <img src="${p.imagen}" alt="${p.titulo}">
+        <span class="badge ${badgeClass}">${badgeTexto}</span>
+        <span class="badge2">${p.categoria}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker">${p.kicker}</div>
+        <h3>${p.titulo}</h3>
+        <p class="tagline">${p.tagline}</p>
+        ${autorHtml}
+        <div class="price-row">
+          <span class="price">${p.precio}</span>
+          <span class="price-note">${p.precioNota}</span>
+        </div>
+        <details class="more">
+          <summary>Ver detalles del contenido</summary>
+          <div class="inner">${p.detalleHtml}</div>
+        </details>
+        <div class="cta-row">
+          ${botonPrincipalHtml}
+          <a class="btn btn-whatsapp" href="${p.enlaceWhatsapp}" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+        <p class="fine-print">${p.finePrint}</p>
+      </div>
+    </div>
+  `;
+}
+
+let filtroCategoria = "Todos";
+let ordenActual = "reciente";
+
+function renderGrid(){
+  let lista = [...productos];
+  if (filtroCategoria !== "Todos"){
+    lista = lista.filter(p => p.categoria === filtroCategoria);
+  }
+  if (ordenActual === "reciente") lista.sort((a,b)=> new Date(b.fecha) - new Date(a.fecha));
+  if (ordenActual === "popular") lista.sort((a,b)=> b.popularidad - a.popularidad);
+  if (ordenActual === "comprado") lista.sort((a,b)=> b.comprados - a.comprados);
+
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = lista.length
+    ? lista.map(crearTarjeta).join("")
+    : `<div class="empty-state">No hay productos en esta categoría todavía.</div>`;
+}
+
+/* ---- Checkout emergente de Tropipay (Regando la Semilla) ---- */
+function openTropipayCheckout(e, link){
+  e.preventDefault();
+  const url = link.dataset.url || link.href;
+  const title = "Pago por material Regando la Semilla";
+  const topWindow = window.top || window;
+  const { screenLeft, screenX, screenTop, screenY } = topWindow;
+  const dualScreenLeft = screenLeft !== undefined ? screenLeft : screenX;
+  const dualScreenTop = screenTop !== undefined ? screenTop : screenY;
+  const width = topWindow.innerWidth || document.documentElement.clientWidth || screen.width;
+  const height = topWindow.innerHeight || document.documentElement.clientHeight || screen.height;
+  const h = height * 0.75;
+  const w = 500;
+  const systemZoom = width / topWindow.screen.availWidth;
+  const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+  const top = (height - h) / 2 / systemZoom + dualScreenTop;
+  const newWindow = window.open(url, title, "scrollbars=yes, width=" + (w / systemZoom) + ", height=" + (h / systemZoom) + ", top=" + top + ", left=" + left);
+  if (newWindow) newWindow.focus();
+}
+document.addEventListener("click", function(e){
+  const link = e.target.closest('[data-tropipay-checkout="true"]');
+  if (link) openTropipayCheckout(e, link);
+});
+
+/* ============================================================
+   3) BARRA DE ORDEN Y NUBE DE ETIQUETAS
+============================================================ */
+function renderControles(){
+  const sortOptions = [
+    {id:"reciente", label:"🆕 Más reciente"},
+    {id:"popular", label:"🔥 Más popular"},
+    {id:"comprado", label:"🛒 Lo más comprado"}
+  ];
+  const sortRow = document.getElementById("sortRow");
+  sortRow.innerHTML = sortOptions.map(o =>
+    `<button class="sort-btn ${o.id===ordenActual?'active':''}" data-sort="${o.id}">${o.label}</button>`
+  ).join("");
+  sortRow.querySelectorAll(".sort-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      ordenActual = btn.dataset.sort;
+      renderControles();
+      renderGrid();
+    });
+  });
+
+  const categorias = ["Todos", ...new Set(productos.map(p=>p.categoria))];
+  const tagCloud = document.getElementById("tagCloud");
+  tagCloud.innerHTML = categorias.map(c =>
+    `<button class="tag-pill ${c===filtroCategoria?'active':''}" data-tag="${c}">${c}</button>`
+  ).join("");
+  tagCloud.querySelectorAll(".tag-pill").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      filtroCategoria = btn.dataset.tag;
+      renderControles();
+      renderGrid();
+    });
+  });
+}
+
+renderControles();
+renderGrid();
+
+/* ============================================================
+   4) MENÚ HAMBURGUESA
+============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('navMenu');
+  if (toggle && menu){
+    toggle.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click', ()=> menu.classList.remove('open'));
+    });
+    document.addEventListener('click', (e)=>{
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) menu.classList.remove('open');
+    });
+  }
+});
+
+/* ============================================================
+   5) TRADUCCIÓN BÁSICA ES / EN (solo textos fijos del sitio)
+============================================================ */
+const traducciones = {
+  nav_inicio: "🏠 Home",
+  nav_libros: "📚 Books & guides",
+  nav_herramientas: "🗂️ Tools",
+  nav_gratis: "🎁 Free resources",
+  nav_comprar: "❓ How to buy",
+  nav_nosotros: "👥 About us",
+  nav_contacto: "✉️ Contact",
+  hero_eyebrow: "Matthew 13:31 — the mustard seed",
+  hero_title: "Resources to sow the Word",
+  hero_sub: "Biblical and educational materials for teachers, leaders and families who want to disciple with eternal purpose.",
+  trust1: "✅ Christian ministry",
+  trust2: "⚡ Instant delivery",
+  trust3: "🔒 Secure payment",
+  trust4: "💬 WhatsApp support",
+  catalog_h2: "Catalog",
+  catalog_lead: "Resources designed for Sunday school teachers, youth leaders and parents discipling at home.",
+  tools_h2: "🗂️ Organization & admin tools",
+  tools_p: "Coming soon: lesson planning templates, Sunday school calendars, and attendance sheets. Write to us if you need a specific one.",
+  gratis_h2: "🎁 Free resources",
+  gratis_p: "All our welcome gifts are marked with the \"Free\" tag in the catalog above. Download them with no sign-up required.",
+  comprar_h2: "❓ How to buy",
+  comprar_p: "1. Choose the resource you want. 2. Tap \"Buy now\" — payment is processed securely via QvaPay. 3. Get your digital file instantly. You can also reach us directly on WhatsApp from any card.",
+  nosotros_h2: "👥 About us",
+  nosotros_p: "We are a ministry dedicated to providing quality biblical and educational resources for teachers, leaders and families. Our mission is to sow God's Word in every heart.",
+  contacto_h2: "✉️ Contact us",
+  contacto_p: "Questions or suggestions? Write to us through this form or directly on WhatsApp."
+};
+const originales = {};
+let idiomaActual = "es";
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+  originales[el.dataset.i18n] = el.innerHTML;
+});
+
+document.getElementById("langToggle").addEventListener("click", ()=>{
+  idiomaActual = idiomaActual === "es" ? "en" : "es";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    el.innerHTML = idiomaActual === "en" ? (traducciones[key] || originales[key]) : originales[key];
+  });
+  document.getElementById("langToggle").textContent = idiomaActual === "es" ? "EN" : "ES";
+  document.documentElement.lang = idiomaActual;
+});
+// ===== Cinta rodante (ticker) =====
+function generarTicker() {
+  const ticker = document.getElementById('ticker');
+  if (!ticker) return;
+
+  // Tomar datos de productos
+  const items = productos.map(p => ({
+    titulo: p.titulo,
+    imagen: p.imagen
+  }));
+
+  // Repetir varias veces para que el desplazamiento sea infinito
+  const repeticiones = Math.max(3, Math.ceil(10 / items.length));
+  let contenido = '';
+  for (let i = 0; i < repeticiones; i++) {
+    items.forEach(item => {
+      contenido += `
+        <span class="ticker-item">
+          <img src="${item.imagen}" alt="${item.titulo}" loading="lazy">
+          <span class="ticker-title">${item.titulo}</span>
+        </span>
+      `;
+    });
+  }
+  ticker.innerHTML = contenido;
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', generarTicker);
+</script>
+
+</body>
+</html>
